@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+
+  # MongoDB Data Container
+  # This is a 'data volume container' for the MongoDB database.
+
+  # MongoDB Container
+  # The main MongoDB container, uses the volume associated with the mongodb-data
+  # container.
+  mongodb:
+    build: ./db
+    command: mongod
+    volumes:
+      - ./db/data:/data/db
+
+  # Backend
+  # Mounts the app as a volume and installs packages so we can develop locally
+  auth:
+    build: ./auth
+    volumes:
+      - ./auth:/src/app
+    working_dir: /src/app
+    ports:
+     - "3100:3000"
+    links:
+      - mongodb:mongodb
+    restart: on-failure

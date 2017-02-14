@@ -1,0 +1,29 @@
+{
+  "name": "rodalies-alarm",
+  "version": "0.0.1",
+  "description": "Display realtime notifications on train service delays based on Social Networks notifications",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node index.js",
+    "test": "mocha ./src/*/test/*.js --compilers js:babel-core/register  --require ./src/common/test/test_helper.js  --recursive",
+    "test:watch": "npm run test -- --watch"
+  },
+  "author": "David Fonollosa",
+  "license": "Apache 2.0",
+  "devDependencies": {
+    "babel-core": "6.18.2",
+    "babel-cli": "6.16.0",
+    "babel-preset-es2015": "6.16.0",
+    "chai": "3.5.0",
+    "chai-immutable": "1.6.0",
+    "mocha": "3.0.0"
+  },
+  "dependencies": {
+    "immutable": "3.8.1",
+    "redux": "3.6.0",
+    "socket.io": "1.5.1"
+  },
+  "babel": {
+    "presets": ["es2015"]
+  }
+}
