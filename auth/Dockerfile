@@ -6,15 +6,30 @@ MAINTAINER David Fonollosa <dafobe@gmail.com>
 # allows run docker image as node -u "node"
 # RUN addgroup -S node && adduser -S -g node node 
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+
+RUN addgroup -S app && adduser -S -g app app
+
+RUN mkdir -p /src/app
+
+# Trick to avoid build issues when runnig from docker-compose
+RUN mkdir /src/app/node_modules
+RUN chown app:app /src/app/node_modules
 
 # Install app dependencies
-COPY package.json /usr/src/app/
+COPY package.json /src/app
+RUN chown -R app:app /src/app
+
+USER app
+WORKDIR /src/app
 RUN npm install
 
+USER root
+COPY . /src/app
+RUN chown -R app:app /src/app/*
+USER app
+
 # Bundle app source
-COPY . /usr/src/app
+# COPY . /src/app
 
 # default API servers port
 EXPOSE 3000

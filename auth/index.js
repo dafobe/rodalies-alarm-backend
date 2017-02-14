@@ -10,7 +10,7 @@ const app = express();
 //app.use(morgan("default", loggerStream));
 //app.use(reverseProxy);
 app.use(function(req,res) {
-    res.json('Hello from Auth2!');
+    res.json('Hello from Auth 2!');
 });
 
 //mongoose.connect(`mongodb://${config.db.host}:{$config.db.port}/apigateway`);

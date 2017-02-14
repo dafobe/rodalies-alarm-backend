@@ -1,7 +1,7 @@
 const config = {
 	secret: 'secret', 
 	db :{	
-			host: '0.0.0.0', 
+			host: 'mongodb', 
 			port: '27017'
 		},
 	server:{

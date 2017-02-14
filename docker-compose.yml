@@ -18,11 +18,26 @@ services:
   # Mounts the app as a volume and installs packages so we can develop locally
   auth:
     build: ./auth
+    command: npm run dev
     volumes:
       - ./auth:/src/app
+      - /src/app/node_modules
     working_dir: /src/app
     ports:
      - "3100:3000"
+    links:
+      - mongodb:mongodb
+    restart: on-failure
+
+  apigateway:
+    build: ./apigateway
+    command: npm run dev
+    volumes:
+      - ./apigateway:/src/app
+      - /src/app/node_modules
+    working_dir: /src/app
+    ports:
+     - "3000:3000"
     links:
       - mongodb:mongodb
     restart: on-failure

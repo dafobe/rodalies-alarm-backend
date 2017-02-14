@@ -15,7 +15,7 @@ const app = express();
 app.use(morgan("default", loggerStream));
 app.use(reverseProxy);
 app.use(function(req,res) {
-    res.json('Hello there !');
+    res.json('Hello from Aap GATEWAY2!');
 });
 
 mongoose.connect(`mongodb://${config.db.host}:{$config.db.port}/apigateway`);

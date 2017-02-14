@@ -13,7 +13,7 @@
     "url": "git+https://github.com/dafobe/rodalies-alarm-gateway.git"
   },
   "author": "David Fonollosa",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "devDependencies": {
     "babel-core": "6.18.2",
     "babel-cli": "6.16.0",
