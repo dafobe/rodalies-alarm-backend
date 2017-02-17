@@ -1,14 +1,9 @@
-const testRoutes = require('./test');
+const publicRoutes = require('./public');
+const secureRoutes = require('./secure');
 
 const routes = function(app) {
-  app.use('/test', testRoutes)
-  /*
-  app.get('/', requireAuth, function(req, res) {
-    res.send({ message: 'Super secret code is ABC123' });
-  });
-  app.post('/signin', requireSignin, Authentication.signin);
-  app.post('/signup', Authentication.signup);
-  */
+  app.use('/', publicRoutes);
+  app.use('/auth', secureRoutes);
 }
 
 module.exports = routes

@@ -10,6 +10,7 @@ const app = express();
 
 /*Setup Server*/
 app.use(morgan(`default`, Logger.stream));
+routes(app);
 app.use(function(req,res) {
     res.json(`Hello from Auth 2!`);
 });
