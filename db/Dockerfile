@@ -9,9 +9,8 @@ MAINTAINER David Fonollosa <dafobe@gmail.com>
 # Installation:
 # Import MongoDB public GPG key AND create a MongoDB list file
 RUN \
-echo http://dl-4.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories && \
 apk add --no-cache mongodb && \
-rm /usr/bin/mongosniff /usr/bin/mongoperf
+rm /usr/bin/mongoperf
 
 VOLUME /data/db
 EXPOSE 27017 28017
